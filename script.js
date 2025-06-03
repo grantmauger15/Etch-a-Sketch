@@ -1,5 +1,17 @@
 const container = document.querySelector("#container");
 
+function getRandomColor() {
+    color = [0, 0, 0];
+    for(let i = 0; i < color.length; i++) {
+        color[i] += Math.floor(Math.random() * 256);
+    }
+    return `rgb(${color.join()})`;
+}
+
+function colorCell(cell) {
+    cell.style.backgroundColor = RGB ? getRandomColor() : 'black';
+}
+
 function generateGrid(size) {
     for(let i = 0; i < size * size; i++) {
         let cell = document.createElement('div');
@@ -10,12 +22,21 @@ function generateGrid(size) {
 
     document.querySelectorAll('.cell').forEach(cell => {
         cell.addEventListener('mouseover', (e) => {
-            if(!e.target.classList.contains("fill")) {
-                e.target.classList.add("fill");
-            }
+            colorCell(e.target);
         });
     });
 }
+/*
+let toggleDraw;
+document.addEventListener('click', () => {
+    toggleDraw = !toggleDraw;
+})
+*/
+
+let RGB = false;
+document.querySelector('#toggleRGB').addEventListener('click', () => {
+    RGB = !RGB;
+});
 
 document.querySelector('#sizeButton').addEventListener('click', () => {
         let newSize = +prompt("Enter a new size value for the grid.");
