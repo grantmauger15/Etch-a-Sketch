@@ -1,0 +1,18 @@
+#container {
+    display: flex;
+    height: 960px;
+    width: 960px;
+    flex-wrap: wrap;
+    border: 1px solid red;
+}
+
+.cell {
+    flex: 0 0 6.25%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.fill {
+    background-color: black;
+}
